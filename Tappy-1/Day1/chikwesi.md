@@ -1,7 +1,7 @@
 # DAY 1
 **Focus** ==[Keeping Components Pure](https://beta.reactjs.org/learn/keeping-components-pure)
 
-Purecomponents are components do satisfy to rules.
+Pure components are components do satisfy to rules.
 
 1. it does not modify objects or variables that exist before it was called.
 2. It gives the same output for the sample input.
@@ -10,16 +10,18 @@ A pure function simple does calculations.
 Just like mathematical functions
 
 ### Example
-y = 2x;
+`y = 2x;`
 
-_Side effects_ or _mutation_ are best handled with event handlers. or as a last resort useEffect hook.
+Key Points:
 
-States should be updated using the setState method.
+- ***Side effects*** or ***mutation*** are best handled with event handlers. or as a last resort useEffect hook.
 
-Props and Inputs should not be modified directly.
+- ***States*** should be updated using the setState method.
 
-Local mutations are components little secret. They are acceptable, and don't make functions impure.
+- ***Props*** and ***Inputs*** should not be modified directly.
 
-In **strict mode** component functions are called twice
+- Local mutations are components little secret. They are acceptable, and don't make functions impure.
+
+- In ***strict mode*** component functions are called twice
 
 
