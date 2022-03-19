@@ -1,33 +1,26 @@
-# State: A Components Memory
+# Rnder and Commit
 
-### Problem
-Local variables don't persist between renders
-- Rect renders the component a second timr from scratch and doesn't consider any canges to local variables.
-- Changes to local variables won't trigger renders.
+Components must be rendered before they are displayed on screen
 
-### Need
-- Retain data
-- Trigger render with new data
+### The Process Of Requesting and Serving UI
+- Triggering render
+- Rendering the component
+- Commiting to the DOM
 
-### Solution
-## useState
+### Reasons for a component to render(Triggering)
+- its initial render
+----- this is done by calling ReactDOM.render() with the root component(e.g <App />) and the target DOM node(document.getElementById('root')).
+- its state has been changed
+## React renders your component(Rendering)
+- on initial render, React calls the root component
+- subsequent renders - React the funtion component whose state update triggers the render
+`The process is recursive - If the updated component returns some other component, React will render the component next and so on` 
 
-- A state variable to retain the data between renders.
-- A state setter function to update the variable and trigger react to render the component again.
+## React commits changes to DOM(Commiting)
 
-**useState** and other functions starting with 'use' are called hooks, special fnctions that allow you perform certain operations while the coponent is rendering.
+Afte rendering, React will modify the DOM
 
-"Only available when React is rendering"
+- For initial render, React will use appendChild() DOM API to insert the DOM nodes it created on the screen.
+- For re-renders, React will apply the minimal necessary operations (calculated while rendering!) to make the DOM match the latest rendering output.
 
-### How does setState know which state to return?
-
-- Hook rely on a stable call order on every render of the same component.
-
-### What does it mean for state to be local
-
-- State is local to the component instance on the screen.
-
-```
-    <PictureComp /> // The state here is isolated from 
-    <PictureComp /> // the state here.
-```
+`React only changes the DOM nodes if there's a difference between renders`
